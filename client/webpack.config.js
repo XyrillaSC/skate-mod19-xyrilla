@@ -2,6 +2,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 
 // TODO: Add and configure workbox plugins for a service worker and manifest file.
 // TODO: Add CSS loaders and babel to webpack.
@@ -21,6 +23,20 @@ module.exports = () => {
       new HtmlWebpackPlugin({
         template: './index.html',
       }),
+      new MiniCssExtractPlugin(),
+      new InjectManifest({
+        swSrc: './src/sw.js',
+        swDest: 'service-worker.js',
+      }), 
+      new WebpackPwaManifest({
+        filename: 'manifest.json',
+        inject: true,
+        fingerprints: true,
+        name: "Skylar Kramer's Awesome Text Editor",
+        short_name: 'SKATE',
+        start_url: '.',
+        display: 'standalone',
+      }),
     ],
 
     module: {
@@ -28,6 +44,10 @@ module.exports = () => {
         {
           test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'asset/resource',
         },
         {
           test: /\.m?js$/,
