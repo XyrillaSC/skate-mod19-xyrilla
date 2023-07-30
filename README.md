@@ -2,9 +2,7 @@
 
 ## Description
 
-I've created this portfolio page in order to show off my best work in an easy to read and enjoy format.
-
-There is much more to add, but this can stand as a leaping pad to continue to build a home for my projects.
+This text editor is installable and will save your text for next time. It currently does not work as there is a bug with the service worker.
 
 ## Screenshot
 
@@ -12,4 +10,4 @@ There is much more to add, but this can stand as a leaping pad to continue to bu
 
 ## Link to Deployed Page
 
-[Skylar's Portfolio Page](https://xyrillasc.github.io/react-portfolio-xyrilla/)
+[SKATE App](https://skate-text-edit-c212a4be5000.herokuapp.com/)
